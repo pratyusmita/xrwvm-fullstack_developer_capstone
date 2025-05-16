@@ -23,3 +23,29 @@
 # - Year (IntegerField) with min value 2015 and max value 2023
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car make object
+
+
+class CarModel(models.Model):
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    CAR_TYPES = [
+        ('SEDAN', 'Sedan'),
+        ('SUV', 'SUV'),
+        ('WAGON', 'Wagon'),
+        ('HATCHBACK', 'Hatchback'),
+        ('COUPE', 'Coupe'),
+        ('MINIVAN', 'Minivan'),
+        ('CONVERTIBLE', 'Convertible'),
+        ('PICKUP', 'Pickup'),
+    ]
+    type = models.CharField(max_length=20, choices=CAR_TYPES, default='SUV')
+    year = models.IntegerField(
+        default=2023,
+        validators=[
+            MaxValueValidator(2025),
+            MinValueValidator(2015),
+        ]
+    )
+
+    def __str__(self):
+        return self.name
