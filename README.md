@@ -141,4 +141,4 @@ The solution architecture consists of the following components:
 2. IBM Cloud: Deploy the Sentiment Analyzer microservice on IBM Cloud Code Engine.
 
 
- **Pratyusmita Patel - Full-Stack Developer**
+
